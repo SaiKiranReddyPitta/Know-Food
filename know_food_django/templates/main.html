@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'FileUpload/style.css' %}">
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+	<script type="text/javascript" src="{% static 'FileUpload/script.js' %}"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<div class="file-upload">
+		  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+		  <form method="POST" name="my_form" enctype="multipart/form-data">
+		  	{% csrf_token %}
+			  <div class="image-upload-wrap">
+			    <input name="my_file" class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			    <div class="drag-text">
+			      <h3>Drag and drop a file or select add Image</h3>
+			    </div>
+			  </div>
+			  <div class="file-upload-content">
+			    <img class="file-upload-image" src="#" alt="your image" />
+			    <div class="image-title-wrap">
+			      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+			    </div>
+			  </div>
+
+			  <div class = "submit">
+			  <input type="submit" name="submitBtn">
+		  	</div>
+		  </form>
+		</div>
+</body>
+</html>
