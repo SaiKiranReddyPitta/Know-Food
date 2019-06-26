@@ -1,6 +1,7 @@
 import boto3
 import os
 from PIL import Image
+import math
 def classify(filename):
 	Classes = ['Banana', 'Bell Pepper', 'Cabbage', 'Carrot', 'Cauliflower', 'Cucumber', 'Green Bean', 'Okra', 'Onion', 'Pea', 'Pepper', 'Potato', 'Pumpkin', 'Radish', 'Squash', 'Sweet Potato', 'Tomato', 'Yam']
 	imageFile = 'static\\media\\' + filename
@@ -19,5 +20,5 @@ def classify(filename):
 	        response = client.detect_labels(Image={'Bytes': image.read()})
 	for label in response['Labels']:
 		if label['Name'] in Classes:
-			return label['Name'], str(label['Confidence'])
+			return label['Name'], str(round(label['Confidence'],2))
 	return 'None', '0'
