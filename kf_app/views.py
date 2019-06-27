@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
+from kf_app.models import Vegetable
 
 # Create your views here.
 def index(request):
@@ -56,7 +57,22 @@ def main(request):
 		'Yam':"https://www.nutritionvalue.org/Sweet_potato%2C_unprepared%2C_raw_nutritional_value.html"
 		}
 		img_url += str(veggie) + ".jpg"
-		data = {'veggie':veggie, 'conf':conf, 'img_url':img_url, 'nutrition_url':nutrition_url[veggie]}
+		veggie_list = Vegetable.objects.get(veg_name=veggie)
+		ninfo =  [
+		veggie_list.calories,
+		veggie_list.total_fat,
+		veggie_list.saturated_fat,
+		veggie_list.sodium,
+		veggie_list.total_carbohydrate,
+		veggie_list.fiber,
+		veggie_list.sugar,
+		veggie_list.protein,
+		veggie_list.vitamin_a,
+		veggie_list.vitamin_c,
+		veggie_list.calcium, 
+		veggie_list.iron, 
+		]
+		data = {'veggie':veggie, 'conf':conf, 'img_url':img_url, 'nutrition_url':nutrition_url[veggie], 'ninfo':ninfo}
 		return render(request, "veg.html", data)
 
 
@@ -67,8 +83,8 @@ def register(request):
 		return render(request, "register.html")
 
 def logout(request):
-    auth_logout(request)
-    return redirect('/')
+	auth_logout(request)
+	return redirect('/')
 
 def forgot(request):
 	return render(request, "forgot.html")
