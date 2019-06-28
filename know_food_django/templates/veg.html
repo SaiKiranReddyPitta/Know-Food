@@ -20,6 +20,7 @@
 	<style>
 		table, th, td {
   border: 1px solid black;
+  font-size: 3px;
 }
 	</style>
 </head>
@@ -143,6 +144,39 @@
 			</tr>
 			</table>
 			<h3><a href="{{nutrition_url}}" target="_blank">Comprehensive Nutritional information about {{veggie}}</a></h3>
+			<font size=5>
+			<table>
+				<tr>
+					<th>Name of the dish</th>
+					<th>Link</th>
+					<th>Number of calories</th>
+				</tr>
+				<tr>
+					<td>{{name_rec.0}}</td>
+					<td><a href="{{dish_url.0}}" target="_blank">{{dish_url.0}}</td>
+					<td>{{cals_dish.0}}</td>
+				</tr>
+				<tr>
+					<td>{{name_rec.1}}</td>
+					<td><a href="{{dish_url.1}}" target="_blank">{{dish_url.1}}</td>
+					<td>{{cals_dish.1}}</td>
+				</tr>
+				<tr>
+					<td>{{name_rec.2}}</td>
+					<td><a href="{{dish_url.2}}" target="_blank">{{dish_url.2}}</td>
+					<td>{{cals_dish.2}}</td>
+				</tr>
+				<tr>
+					<td>{{name_rec.3}}</td>
+					<td><a href="{{dish_url.3}}" target="_blank">{{dish_url.3}}</td>
+					<td>{{cals_dish.3}}</td>
+				</tr>
+				<tr>
+					<td>{{name_rec.4}}</td>
+					<td><a href="{{dish_url.4}}" target="_blank">{{dish_url.4}}</td>
+					<td>{{cals_dish.4}}</td>
+				</tr>
+			</table></font>
 		</div>
 	</div>
 </body>
